@@ -1,0 +1,15 @@
+{
+  "name": "Las mañanitas en bajo · Musicala",
+  "short_name": "Mañanitas Bajo",
+  "description": "Practica la melodía de Las mañanitas en bajo eléctrico con notación de cuerda y traste y primera posición.",
+  "lang": "es-CO",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F9F9F9",
+  "theme_color": "#F9F9F9",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}

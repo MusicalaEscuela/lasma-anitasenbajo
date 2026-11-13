@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F9F9F9">
+  <meta name="description" content="Aprende Las mañanitas en bajo de 4 cuerdas con tablatura numérica, primera posición, audio interactivo y práctica a tu ritmo.">
+  <title>Las mañanitas en bajo · Musicala</title>
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Musicala, volver al inicio">
+        <img class="brand-logo" src="icons/musicala.png" alt="Musicala">
+      </a>
+      <span class="header-tag"><span class="tag-dot"></span> CLASE INTERACTIVA DE BAJO</span>
+    </header>
+
+    <main id="inicio">
+      <section class="intro-block" aria-labelledby="pageTitle">
+        <div class="eyebrow"><span class="eyebrow-icon">♪</span> REPERTORIO PARA PRINCIPIANTES</div>
+        <div class="intro-heading">
+          <div>
+            <h1 id="pageTitle">Las <em>mañanitas</em> <span>🎸</span></h1>
+            <p class="intro-text">Aprende la melodía nota por nota, a tu ritmo. Sigue los números, escucha cómo suena y toca en tu bajo.</p>
+          </div>
+          <div class="song-stats" aria-label="Datos del ejercicio">
+            <span><b>DO mayor</b><small>Tonalidad</small></span>
+            <span><b>3/4</b><small>Compás</small></span>
+            <span><b>0–3</b><small>Trastes</small></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbar surface" aria-label="Controles de reproducción">
+        <div class="toolbar-main">
+          <button class="primary-button" id="playBtn" type="button"><svg viewBox="0 0 24 24" class="icon" fill="currentColor"><path d="m8 5 12 7-12 7V5Z"/></svg><span>Escuchar melodía</span></button>
+          <button class="square-button" id="restartBtn" aria-label="Volver al principio" title="Volver al principio" type="button"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 11a9 9 0 1 1 2.6 6.4M3 4v7h7"/></svg></button>
+          <button class="square-button" id="prevBtn" aria-label="Nota anterior" title="Nota anterior" type="button"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 5v14M19 5 9 12l10 7V5Z"/></svg></button>
+          <button class="square-button" id="nextBtn" aria-label="Nota siguiente" title="Nota siguiente" type="button"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 5v14M5 5l10 7-10 7V5Z"/></svg></button>
+        </div>
+        <div class="toolbar-options">
+          <label class="tempo-field" for="tempoSlider"><span>Velocidad <b id="tempoValue">80</b> <small>BPM</small></span><input id="tempoSlider" type="range" min="45" max="130" step="5" value="80"></label>
+          <label class="toggle-option"><input id="metronomeToggle" type="checkbox"><span class="switch" aria-hidden="true"></span><span>Metrónomo</span></label>
+          <label class="toggle-option"><input id="loopToggle" type="checkbox"><span class="switch" aria-hidden="true"></span><span>Repetir</span></label>
+        </div>
+      </section>
+
+      <div class="layout-grid">
+        <section class="left-column">
+          <article class="note-panel surface" aria-labelledby="currentNoteTitle">
+            <div class="card-head"><span class="section-kicker">01 / NOTA ACTUAL</span><span id="noteCounter" class="counter-chip">Nota 1 de 66</span></div>
+            <div class="note-layout">
+              <div class="big-note" aria-live="polite" aria-atomic="true"><span class="big-note-label" id="currentNoteTitle">CUERDA Y TRASTE</span><div class="big-note-number" id="currentPosition">43</div><span class="big-note-name" id="currentNoteName">SOL · G1</span></div>
+              <div class="note-explanation"><div class="note-guidance">Toca esta nota:</div><div id="currentString" class="string-title">Cuerda MI <span>(4.ª cuerda)</span></div><div id="currentFinger" class="finger-text">Traste 3 · dedo sugerido: 3</div><p class="note-hint" id="currentHint">El primer número indica la cuerda y el segundo, el traste.</p><button type="button" id="hearNoteBtn" class="text-button"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4V5ZM15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg> Escuchar esta nota</button></div>
+            </div>
+            <div class="progress-area"><div class="progress-copy"><span>PROGRESO DE LA MELODÍA</span><b id="songProgressText">0%</b></div><div class="progress-track" role="progressbar" aria-label="Progreso de la canción" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="songProgress"><div id="progressFill"></div></div></div>
+          </article>
+
+          <article class="fretboard-panel surface" aria-labelledby="fretboardTitle">
+            <div class="card-head"><span class="section-kicker">02 / DIAPASÓN INTERACTIVO</span><span class="hint-badge">Toca cualquier casilla</span></div>
+            <div class="panel-title-row"><h2 id="fretboardTitle">¿Dónde pongo el dedo?</h2><span class="microhint">Vista de frente · 4 cuerdas</span></div>
+            <div class="fretboard-legend"><span><i class="legend-circle selected"></i> Nota que sigue</span><span><i class="legend-circle normal"></i> Otras posiciones</span></div>
+            <div class="fretboard-scroll"><div id="fretboard" class="fretboard" role="group" aria-label="Diapasón de bajo eléctrico, cuerdas Sol Re La Mi y trastes 0 al 3"></div></div>
+            <p class="fretboard-help" id="fretFeedback" aria-live="polite">👆 Pulsa el traste resaltado para escuchar cómo debe sonar.</p>
+          </article>
+        </section>
+
+        <section class="right-column">
+          <article class="score-panel surface" aria-labelledby="scoreTitle">
+            <div class="card-head"><span class="section-kicker">03 / LECTURA DE LA MELODÍA</span><span class="hint-badge">Sin partituras complicadas</span></div>
+            <h2 id="scoreTitle">Lee la melodía</h2>
+            <div id="notationPicker" class="mode-switch notation-picker" role="group" aria-label="Formato de lectura">
+              <button type="button" class="mode-btn active" data-format="numeric" aria-pressed="true">Notación numérica</button>
+              <button type="button" class="mode-btn" data-format="tab" aria-pressed="false">Tablatura</button>
+              <button type="button" class="mode-btn" data-format="staff" aria-pressed="false">Partitura</button>
+            </div>
+            <p id="notationHelp" class="card-lede">Lee de <strong>izquierda a derecha</strong>. El primer dígito indica la cuerda y el segundo, el traste. <strong>43</strong> es cuerda 4, traste 3. <strong>10</strong> es cuerda 1 al aire.</p>
+            <div class="phrase-nav" id="phraseNav" role="group" aria-label="Seleccionar fragmento"></div>
+            <div class="section-heading"><div><span id="visibleSectionNumber" class="section-number">FRAGMENTO 1 DE 4</span><h3 id="visibleSectionName">El comienzo</h3></div><span id="visibleBarsLabel" class="bars-label">Compases 1–4</span></div>
+            <div id="measureGrid" class="measure-grid" aria-label="Notación numérica de los compases actuales"></div>
+            <div class="score-bottom"><button type="button" id="nextSectionBtn" class="mini-button">Siguiente fragmento <span aria-hidden="true">→</span></button></div>
+          </article>
+
+          <article class="practice-panel surface" aria-labelledby="practiceTitle">
+            <div class="card-head"><span class="section-kicker">04 / A PRACTICAR</span><span class="hint-badge">A tu propio ritmo</span></div>
+            <h2 id="practiceTitle">¿Cómo quieres practicar?</h2>
+            <div class="mode-switch" role="group" aria-label="Modo de práctica"><button type="button" id="learnModeBtn" class="mode-btn active" aria-pressed="true">✨ Aprender</button><button type="button" id="challengeModeBtn" class="mode-btn" aria-pressed="false">🎯 Reto</button></div>
+            <p id="modeDescription" class="mode-description">Explora el diapasón, escucha las notas y avanza con los botones. Sin afán.</p>
+            <div class="practice-actions"><div class="practice-tip"><span id="practiceEmoji" class="practice-emoji">💡</span><span id="practiceTip">Empieza a 60–80 BPM. Cuando te salga, aumenta la velocidad.</span></div><span id="challengeScore" class="challenge-score" hidden>0 aciertos</span></div>
+          </article>
+        </section>
+      </div>
+
+      <section class="bottom-help" aria-label="Consejos para principiantes"><span class="help-icon">🎸</span><div><b>Primera posición, de verdad.</b><p>Esta adaptación en Do mayor usa solo las cuerdas MI, LA, RE y SOL y los trastes 0, 2 y 3. No necesitas desplazarte por el mástil.</p></div></section>
+      <footer class="site-footer"><span>Una experiencia para aprender música con calma. ♥ <b>Musicala</b></span><span>Melodía tradicional mexicana · adaptación didáctica para bajo</span><button id="printBtn" type="button">🖨 Imprimir lectura actual</button></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <section id="printView" class="print-view" aria-label="Tablatura completa para impresión"></section>
+</body>
+</html>
